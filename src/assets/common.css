@@ -1,0 +1,46 @@
+.header {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00246B;
+
+  .nav-menu {
+    display: flex;
+    margin-right: 20px;
+
+    .elements {
+      padding: 10px;
+      margin-right: 123px;
+      font-weight: bold;
+      font-size: 25px;
+      color: white !important;
+    }
+
+  }
+}
+
+.container-class {
+  display: flex;
+  height: 87.5vh;
+  background-color: #CADCFC;
+  align-items: center;
+  justify-content: center;
+
+  .child-container {
+    height: 5rem;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 5px;
+
+    .child-ele {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
