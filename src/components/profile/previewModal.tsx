@@ -45,13 +45,13 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
       <Modal.Body className='d-flux'>
         <div>
           Check IN
-          <DatePicker selected={chekIn} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
+          <DatePicker selected={chekIn} maxDate={chekOut || undefined} minDate={new Date()}  placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setCheckIn(date)
           }} />
         </div>
         <div>
           Check Out
-          <DatePicker selected={chekOut} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
+          <DatePicker selected={chekOut} minDate={chekIn || new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setChekOut(date)
           }} />
         </div>

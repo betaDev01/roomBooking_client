@@ -18,7 +18,7 @@ const ProfileComponent = () => {
     dispatch(getBookingDetailsRequest());
     dispatch(hotelListRequest());
 
-  }, [])
+  }, [dispatch])
 
   console.log(hotelList)
 

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { routes } from '../../utils';
 import { Route, Routes } from 'react-router';
 import { CustomSpinner } from '../../components';

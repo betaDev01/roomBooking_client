@@ -65,19 +65,19 @@ export const commonReducer = (prevState: IReducerInitialState = initialState, ac
 
 
     //Modify Booking
-    case actionTypes.GET_BOOKING_DETAILS_REQUEST:
+    case actionTypes.MODIFY_BOOKING_REQUEST:
       return produce(prevState, (nextState) => {
         nextState.isModifyBookingFetching = true;
         nextState.modifyBookingError = ''
       });
 
-    case actionTypes.GET_BOOKING_DETAILS_FAILURE:
+    case actionTypes.MODIFY_BOOKING_FAILURE:
       return produce(prevState, (nextState) => {
         nextState.isModifyBookingFetching = false;
         nextState.modifyBookingError = action.payload;
       });
 
-    case actionTypes.GET_BOOKING_DETAILS_RESPONSE:
+    case actionTypes.MODIFY_BOOKING_RESPONSE:
       return produce(prevState, (nextState) => {
         nextState.isModifyBookingFetching = false;
         nextState.modifyBookingError = '';

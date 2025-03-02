@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Hotel Booking Frontend - roomBooking_client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is the frontend for the Hotel Booking Application, built with React. It provides a user-friendly interface for booking hotels and viewing existing reservations.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+Dashboard Page: Allows users to search and book hotels.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+My Bookings Page: Displays a list of user bookings.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+React Router: Enables seamless navigation between pages.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React
 
-### `npm run build`
+React Router
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React Bootstrap
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Axios (for API requests)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Redux 
 
-### `npm run eject`
+Redux Saga
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Ensure you have the following installed:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Node.js
 
-## Learn More
+npm or yarn
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clone the repository and install dependencies:
+
+```sh
+git clone https://github.com/betaDev01/roomBooking_client.git
+
+cd roomBooking_client
+
+npm install
+
+```
+
+## Running the Application
+
+Development Mode
+
+```sh
+npm start
+```
+
+This will start the development server at ```http://localhost:3000/```.

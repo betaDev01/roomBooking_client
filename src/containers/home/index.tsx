@@ -25,7 +25,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(hotelListRequest())
-  }, []);
+  }, [dispatch]);
 
   const resetStates = () => {
     setChekOut(null);
@@ -119,7 +119,7 @@ const Dashboard = () => {
         </div>
         <div className="child-ele">
           <>CheckOut Date</>
-          <DatePicker selected={chekOut} minDate={chekIn || undefined} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
+          <DatePicker selected={chekOut} minDate={chekIn || new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setError(false);
             setChekOut(date)
           }} />

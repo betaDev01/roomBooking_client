@@ -6,7 +6,7 @@ export const HeaderComponent = () => {
 
   return (
     <header className='header'>
-      <img src={logo} />
+      <img src={logo} alt='Logo' />
 
       <div className="nav-menu">
         <span onClick={()=>{navigate('/')}} className="elements text-light ">Dashboard</span>
