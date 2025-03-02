@@ -22,8 +22,6 @@ interface IProfileCardProps {
 }
 
 export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBack, cancelCallBack }: IProfileCardProps) => {
-  console.log("🚀 ~ PreviewComponent ~ hotelDetails:", hotelDetails)
-  console.log("🚀 ~ PreviewComponent ~ element:", element)
   const [chekIn, setCheckIn] = useState<Date | null>(null);
   const [chekOut, setChekOut] = useState<Date | null>(null);
   const [guestCount, setGuestCount] = useState<number>(0);
@@ -39,7 +37,7 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
   return (
     <Modal show={show} >
       <Modal.Header>
-        <Modal.Title>Booking Details : {hotelDetails?.hotel_name}</Modal.Title>
+        <Modal.Title>{hotelDetails?.hotel_name} - {hotelDetails?.location}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body className='d-flux'>
