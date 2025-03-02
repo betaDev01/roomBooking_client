@@ -59,8 +59,8 @@ const Dashboard = () => {
       <div className="child-container">
         <div className="child-ele">
           <>Select Location</>
-          <Dropdown className="p-10">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown  >
+            <Dropdown.Toggle  className="dropdown-custom" id="dropdown-basic">
               {filterLocation || 'Location'}
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -86,7 +86,7 @@ const Dashboard = () => {
         <div className="child-ele">
           <>Select Hotel</>
           <Dropdown className="p-10">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle className="dropdown-custom" id="dropdown-basic">
               {location ? location?.hotel_name : 'Hotel'}
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -143,7 +143,7 @@ const Dashboard = () => {
 
             }} value={guestCount} />
           </Form>
-          <>Max {(location?.available_rooms || 0) * 3} Guest</>
+          <span className="notify-count">Max {(location?.available_rooms || 0) * 3} Guest</span>
         </div>
 
         <div className="child-ele">
@@ -161,11 +161,11 @@ const Dashboard = () => {
               }
             }} value={roomCount} />
           </Form>
-          <>Max {location?.available_rooms || 0} Rooms</>
+          <span className="notify-count">Max {location?.available_rooms || 0} Rooms</span>
 
         </div>
         <div>
-          <Button onClick={bookHotel}> Book Hotel</Button>
+          <Button variant="success"  className="mr-5" onClick={bookHotel}> Book Hotel</Button>
           <Button onClick={resetStates} variant="danger"> Reset</Button>
         </div>
         {isError ? <Alert variant={'warning'} onClose={() => setError(false)}>

@@ -42,8 +42,18 @@
     .child-ele {
       display: flex;
       flex-direction: column;
+      margin-right: 5px;
     }
   }
+}
+
+.mr-5{
+  margin-right: 5px;
+
+}
+
+.notify-count{
+  color: #dcba92;
 }
 
 .profile{
@@ -80,4 +90,10 @@
 .d-flux{
   display: flex;
   flex-direction: column;
+}
+
+.dropdown-custom{
+  background-color: #111A43 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
 }

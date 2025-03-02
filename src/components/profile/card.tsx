@@ -21,7 +21,7 @@ export const ProfileCard = ({ hotelDetails, element, callBack, customClass, dele
           </span>
         </Card.Text>
         <div>
-          {!customClass && <Button variant="primary" onClick={callBack}>Preview</Button>}
+          {!customClass && <Button className="dropdown-custom" onClick={callBack}>Preview</Button>}
           {customClass && <Button variant="danger" onClick={deleteCallBack}>Delete</Button>}
         </div>
       </Card.Body>

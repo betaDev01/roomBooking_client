@@ -43,7 +43,7 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
       <Modal.Body className='d-flux'>
         <div>
           Check IN
-          <DatePicker selected={chekIn} maxDate={chekOut || undefined} minDate={new Date()}  placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
+          <DatePicker selected={chekIn} maxDate={chekOut || undefined} minDate={new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setCheckIn(date)
           }} />
         </div>
@@ -69,7 +69,7 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
 
               }} value={guestCount} />
             </Form>
-            <>Max {(hotelDetails?.available_rooms || 0) * 3} Guest</>
+            <span className="notify-count">Max {(hotelDetails?.available_rooms || 0) * 3} Guest</span>
           </div>
 
           <div className="child-ele">
@@ -86,7 +86,7 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
                 }
               }} value={roomCount} />
             </Form>
-            <>Max {hotelDetails?.available_rooms || 0} Rooms</>
+            <span className="notify-count">Max {hotelDetails?.available_rooms || 0} Rooms</span>
 
           </div>
         </div>
@@ -94,7 +94,7 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
 
       <Modal.Footer>
         <Button variant="secondary" onClick={setShow}>Close</Button>
-        <Button variant="primary" onClick={() => callBack(
+        <Button className="dropdown-custom" onClick={() => callBack(
           chekIn,
           chekOut,
           guestCount,
