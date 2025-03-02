@@ -64,3 +64,6 @@ This will start the development server at ```http://localhost:3000/```.
 ### Booking List Page
 Cards with an Orance background are cancelled reservations.
 ![image](https://github.com/user-attachments/assets/035199bb-7967-41c9-b5d4-424c997f822a)
+
+## Unit Testing
+Unit tests need to be implemented to ensure code quality, reliability, and maintainability
