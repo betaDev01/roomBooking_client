@@ -6,8 +6,8 @@ export const hotelListFailure = (payload: string) => createAction(actionTypes.HO
 export const hotelListResponse = (payload: IHotelListResponse[]) => createAction(actionTypes.HOTEL_LIST_RESPONSE, payload);
 
 export const getBookingDetailsRequest = () => createAction(actionTypes.GET_BOOKING_DETAILS_REQUEST);
-export const getBookingDetailsFailure = (payload: string) => createAction(actionTypes.GET_BOOKING_DETAILS_RESPONSE, payload);
-export const getBookingDetailsResponse = (payload: IBookingDetails[]) => createAction(actionTypes.GET_BOOKING_DETAILS_FAILURE, payload);
+export const getBookingDetailsFailure = (payload: string) => createAction(actionTypes.GET_BOOKING_DETAILS_FAILURE, payload);
+export const getBookingDetailsResponse = (payload: IBookingDetails[]) => createAction(actionTypes.GET_BOOKING_DETAILS_RESPONSE, payload);
 
 export const modifyBookingRequest = (payload: IModifyBooking) => createAction(actionTypes.MODIFY_BOOKING_REQUEST, payload);
 export const modifyBookingFailure = (payload: string) => createAction(actionTypes.MODIFY_BOOKING_FAILURE, payload);

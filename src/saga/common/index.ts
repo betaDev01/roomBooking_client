@@ -1,6 +1,17 @@
 import { put, takeLatest } from "redux-saga/effects";
 import * as actionTypes from '../../action/action-types/index'
-import { deleteBookingFailure, deleteBookingResponse, getBookingDetailsFailure, getBookingDetailsResponse, hotelListFailure, hotelListResponse, modifyBookingFailure, modifyBookingResponse } from "../../action";
+import {
+  deleteBookingFailure,
+  deleteBookingResponse,
+  getBookingDetailsFailure,
+  getBookingDetailsRequest,
+  getBookingDetailsResponse,
+  hotelListFailure,
+  hotelListRequest,
+  hotelListResponse,
+  modifyBookingFailure,
+  modifyBookingResponse
+} from "../../action";
 import { IBookingDetails, IDeleteBookingRequest, IHotelListRequest, IHotelListResponse, IModifyBooking, ISagaPayload } from "../../utils/types";
 import { API_ROUTES } from "../../utils";
 import { apiCall } from "../../utils/helper";
@@ -12,7 +23,7 @@ function* commonRequest(action: ISagaPayload<IHotelListRequest>): any {
       method: API_ROUTES.hotelList.method,
       params: action.payload ? {
         'location': action.payload?.location || '',
-      }: null
+      } : null
     });
     if (response.status === 401) {
       yield put(hotelListFailure(response.data.error));
@@ -26,7 +37,7 @@ function* commonRequest(action: ISagaPayload<IHotelListRequest>): any {
   }
 }
 
-function* getBookingDetailsRequest(): any {
+function* getBookingDetailsRequestSaga(): any {
   try {
     const response = yield apiCall({
       apiPath: API_ROUTES.getBookingDetais.path,
@@ -37,6 +48,8 @@ function* getBookingDetailsRequest(): any {
     } else {
       const res: IBookingDetails[] = response.data?.data && response.data?.data.length > 0 ?
         response.data.data : [];
+      console.log("🚀 ~ function*getBookingDetailsRequest ~ res:", res)
+
       yield put(getBookingDetailsResponse(res));
     }
   } catch (error: any) {
@@ -49,7 +62,7 @@ function* deleteBookingRequest(action: ISagaPayload<IDeleteBookingRequest>): any
     const response = yield apiCall({
       apiPath: API_ROUTES.deleteBooking.path,
       method: API_ROUTES.deleteBooking.method,
-      params:{
+      params: {
         'bookingId': action.payload?.bookingId
       }
     });
@@ -59,6 +72,7 @@ function* deleteBookingRequest(action: ISagaPayload<IDeleteBookingRequest>): any
       const res: IBookingDetails[] = response.data?.data && response.data?.data.length > 0 ?
         response.data.data : [];
       yield put(deleteBookingResponse());
+      yield put(getBookingDetailsRequest());
     }
   } catch (error: any) {
     yield put(deleteBookingFailure(error));
@@ -70,7 +84,7 @@ function* modifyBokingRequest(action: ISagaPayload<IModifyBooking>): any {
     const response = yield apiCall({
       apiPath: API_ROUTES.modifyBooking.path,
       method: API_ROUTES.modifyBooking.method,
-      data:{
+      data: {
         ...action.payload
       }
     });
@@ -80,6 +94,8 @@ function* modifyBokingRequest(action: ISagaPayload<IModifyBooking>): any {
       const res: IBookingDetails[] = response.data?.data && response.data?.data.length > 0 ?
         response.data.data : [];
       yield put(modifyBookingResponse());
+      yield put(getBookingDetailsRequest());
+      yield put(hotelListRequest())
     }
   } catch (error: any) {
     yield put(modifyBookingFailure(error));
@@ -88,7 +104,7 @@ function* modifyBokingRequest(action: ISagaPayload<IModifyBooking>): any {
 
 export function* commonSagaRequests() {
   yield takeLatest(actionTypes.HOTEL_LIST_REQUEST, commonRequest);
-  yield takeLatest(actionTypes.GET_BOOKING_DETAILS_REQUEST, getBookingDetailsRequest );
-  yield takeLatest(actionTypes.MODIFY_BOOKING_REQUEST, modifyBokingRequest );
-  yield takeLatest(actionTypes.DELETE_BOOKING_REQUEST, deleteBookingRequest );
+  yield takeLatest(actionTypes.GET_BOOKING_DETAILS_REQUEST, getBookingDetailsRequestSaga);
+  yield takeLatest(actionTypes.MODIFY_BOOKING_REQUEST, modifyBokingRequest);
+  yield takeLatest(actionTypes.DELETE_BOOKING_REQUEST, deleteBookingRequest);
 }

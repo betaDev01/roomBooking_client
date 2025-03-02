@@ -3,14 +3,15 @@ import { Button, Container, Dropdown, Form } from "react-bootstrap"
 import "../../assets/common.css"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { hotelListRequest } from "../../action"
-import { IHotelListResponse, IStore } from "../../utils/types"
+import { hotelListRequest, modifyBookingRequest } from "../../action"
+import { IHotelListResponse, IModifyBooking, IStore } from "../../utils/types"
 import DatePicker from "react-datepicker";
 import Alert from 'react-bootstrap/Alert';
 
 import "react-datepicker/dist/react-datepicker.css";
 const Dashboard = () => {
 
+  const [filterLocation, setFilterLocation] = useState('')
   const [location, setLocation] = useState<IHotelListResponse | null>(null);
 
   const [chekIn, setCheckIn] = useState<Date | null>(null);
@@ -32,6 +33,7 @@ const Dashboard = () => {
     setGuestCount(0);
     setRoom(0);
     setLocation(null);
+    setFilterLocation('');
   }
   const bookHotel = () => {
     console.log('clicked')
@@ -39,7 +41,15 @@ const Dashboard = () => {
     if (isError) {
       setError(true);
     } else {
-
+      const payload: IModifyBooking = {
+        action: 'booked',
+        checkInDate: chekIn || new Date(),
+        checkOutDate: chekOut || new Date(),
+        guests: guestCount,
+        roomsBooked: roomCount,
+        hotelId: location?.id || ''
+      }
+      dispatch(modifyBookingRequest(payload));
       resetStates()
     }
   }
@@ -48,13 +58,38 @@ const Dashboard = () => {
     <Container fluid className="container-class">
       <div className="child-container">
         <div className="child-ele">
-          <>Select location</>
+          <>Select Location</>
           <Dropdown className="p-10">
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-              {location ? location?.hotel_name : 'Location'}
+              {filterLocation || 'Location'}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {hotelListRespose.map((it, index) => {
+                return (
+                  <Dropdown.Item
+                    key={index}
+                    active={it.location === filterLocation}
+                    onClick={() => {
+                      setError(false);
+                      setRoom(0);
+                      setGuestCount(0);
+                      setFilterLocation(it.location);
+                    }}
+                  >
+                    {it.location}
+                  </Dropdown.Item>)
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+        <div className="child-ele">
+          <>Select Hotel</>
+          <Dropdown className="p-10">
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              {location ? location?.hotel_name : 'Hotel'}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {hotelListRespose.filter(fIt => fIt.location === filterLocation).map((it, index) => {
                 return (
                   <Dropdown.Item
                     key={index}
@@ -73,9 +108,10 @@ const Dashboard = () => {
           </Dropdown>
         </div>
 
+
         <div className="child-ele">
           <>CheckIn Date</>
-          <DatePicker selected={chekIn} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
+          <DatePicker selected={chekIn} maxDate={chekOut || undefined} minDate={new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setCheckIn(date)
             setError(false);
 
@@ -83,7 +119,7 @@ const Dashboard = () => {
         </div>
         <div className="child-ele">
           <>CheckOut Date</>
-          <DatePicker selected={chekOut} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
+          <DatePicker selected={chekOut} minDate={chekIn || undefined} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setError(false);
             setChekOut(date)
           }} />
@@ -99,7 +135,7 @@ const Dashboard = () => {
 
               if (/^\d*$/.test(value)) {
                 const availRooms = location?.available_rooms || 0;
-                if (Number(value) < (availRooms * 3)) {
+                if (Number(value) <= (availRooms * 3)) {
                   setGuestCount(Number(value))
                 }
               }
@@ -127,11 +163,12 @@ const Dashboard = () => {
           <>Max {location?.available_rooms || 0} Rooms</>
 
         </div>
-        <Button onClick={bookHotel}> Book Hotel</Button>
-        <Button onClick={resetStates} variant="danger"> Reset</Button>
-
+        <div>
+          <Button onClick={bookHotel}> Book Hotel</Button>
+          <Button onClick={resetStates} variant="danger"> Reset</Button>
+        </div>
         {isError ? <Alert variant={'warning'} onClose={() => setError(false)}>
-          Pease Fill out all the felds
+          Please Fill out all the felds
         </Alert> : null}
       </div>
     </Container>

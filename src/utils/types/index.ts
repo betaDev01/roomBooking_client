@@ -33,7 +33,7 @@ export interface IDeleteBookingRequest {
 }
 
 export interface IModifyBooking {
-  bookingId: string,
+  bookingId?: string,
   hotelId: string,
   checkInDate: Date,
   checkOutDate: Date,

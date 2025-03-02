@@ -8,10 +8,10 @@
   .nav-menu {
     display: flex;
     margin-right: 20px;
+    flex-wrap: wrap;
 
     .elements {
       padding: 10px;
-      margin-right: 123px;
       font-weight: bold;
       font-size: 25px;
       color: white !important;
@@ -28,7 +28,8 @@
   justify-content: center;
 
   .child-container {
-    height: 5rem;
+    flex-wrap: wrap;
+    min-height: 7rem;
     border-radius: 10px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     background-color: #ffffff;
@@ -43,4 +44,40 @@
       flex-direction: column;
     }
   }
+}
+
+.profile{
+  display: flex;
+  height: 87.5vh;
+  background-color: #CADCFC;
+  flex-wrap: wrap;
+  
+  .card{
+   
+    padding: 5px;
+    margin: 5px;
+    max-height: 10rem ;
+
+    .card-body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .content{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .card-warning{
+    background-color: rgb(228, 196, 161);
+  }
+
+}
+
+.d-flux{
+  display: flex;
+  flex-direction: column;
 }
