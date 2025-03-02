@@ -14,8 +14,8 @@ export const routes = [
 ]
 
 export const API_ROUTES = {
-  hotelList: { path: '/booking/list', method: 'GET' },
-  modifyBooking: { path: '/booking/modify', method: 'POST' },
-  deleteBooking: { path: '/booking/delete', method: 'DELETE' },
-  getBookingDetais: { path: '/booking/booking-list', method: 'GET' }
+  hotelList: { path: '/list', method: 'GET' },
+  modifyBooking: { path: '/modify', method: 'POST' },
+  deleteBooking: { path: '/delete', method: 'DELETE' },
+  getBookingDetais: { path: '/booking-list', method: 'GET' }
 }
