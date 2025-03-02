@@ -10,11 +10,6 @@ export const routes = [
     name: 'Profile',
     route: '/profile',
     component: lazy(() => import('../containers/profile'))
-  },
-  {
-    name: 'Contact',
-    route: '/contact',
-    component: lazy(() => import('../containers/contact'))
   }
 ]
 
