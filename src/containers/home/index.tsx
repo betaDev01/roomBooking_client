@@ -73,6 +73,7 @@ const Dashboard = () => {
                       setError(false);
                       setRoom(0);
                       setGuestCount(0);
+                      setLocation(null);
                       setFilterLocation(it.location);
                     }}
                   >
