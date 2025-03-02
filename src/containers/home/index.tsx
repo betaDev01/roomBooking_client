@@ -1,7 +1,7 @@
 import { Button, Container, Dropdown, Form } from "react-bootstrap"
 
 import "../../assets/common.css"
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { hotelListRequest, modifyBookingRequest } from "../../action"
 import { IHotelListResponse, IModifyBooking, IStore } from "../../utils/types"
@@ -58,9 +58,9 @@ const Dashboard = () => {
     <Container fluid className="container-class">
       <div className="child-container">
         <div className="child-ele">
-          <>Select Location</>
+          <Fragment>Select Location</Fragment>
           <Dropdown  >
-            <Dropdown.Toggle  className="dropdown-custom" id="dropdown-basic">
+            <Dropdown.Toggle className="dropdown-custom" id="dropdown-basic">
               {filterLocation || 'Location'}
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -84,7 +84,7 @@ const Dashboard = () => {
           </Dropdown>
         </div>
         <div className="child-ele">
-          <>Select Hotel</>
+          <Fragment>Select Hotel</Fragment>
           <Dropdown className="p-10">
             <Dropdown.Toggle className="dropdown-custom" id="dropdown-basic">
               {location ? location?.hotel_name : 'Hotel'}
@@ -111,7 +111,7 @@ const Dashboard = () => {
 
 
         <div className="child-ele">
-          <>CheckIn Date</>
+          <Fragment>CheckIn Date</Fragment>
           <DatePicker selected={chekIn} maxDate={chekOut || undefined} minDate={new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setCheckIn(date)
             setError(false);
@@ -119,7 +119,7 @@ const Dashboard = () => {
           }} />
         </div>
         <div className="child-ele">
-          <>CheckOut Date</>
+          <Fragment>CheckOut Date</Fragment>
           <DatePicker selected={chekOut} minDate={chekIn || new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setError(false);
             setChekOut(date)
@@ -128,7 +128,10 @@ const Dashboard = () => {
 
 
         <div className="child-ele">
-          <>No of Guests</>
+          <span>
+            <Fragment>No of Guests</Fragment>
+            <span className="notify-count"> {(location?.available_rooms || 0) * 3} Guest Avail</span>
+          </span>
           <Form>
             <Form.Control type="text" onChange={(e) => {
               const value = e.target.value;
@@ -143,11 +146,13 @@ const Dashboard = () => {
 
             }} value={guestCount} />
           </Form>
-          <span className="notify-count">Max {(location?.available_rooms || 0) * 3} Guest</span>
+
         </div>
 
         <div className="child-ele">
-          <>No of Rooms</>
+          <span>
+            <Fragment>No of Rooms</Fragment> <span className="notify-count">{location?.available_rooms || 0} Rooms Avail</span>
+          </span>
           <Form>
             <Form.Control type="text" onChange={(e) => {
               setError(false);
@@ -161,12 +166,14 @@ const Dashboard = () => {
               }
             }} value={roomCount} />
           </Form>
-          <span className="notify-count">Max {location?.available_rooms || 0} Rooms</span>
 
         </div>
-        <div>
-          <Button variant="success"  className="mr-5" onClick={bookHotel}> Book Hotel</Button>
+        <div className="child-ele">
+          <span>Actions</span>
+          <div>
+          <Button variant="success" className="mr-5" onClick={bookHotel}> Book Hotel</Button>
           <Button onClick={resetStates} variant="danger"> Reset</Button>
+          </div>
         </div>
         {isError ? <Alert variant={'warning'} onClose={() => setError(false)}>
           Please Fill out all the felds

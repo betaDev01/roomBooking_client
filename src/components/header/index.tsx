@@ -9,8 +9,8 @@ export const HeaderComponent = () => {
       <img src={logo} alt='Logo' />
 
       <div className="nav-menu">
-        <span onClick={()=>{navigate('/')}} className="elements text-light ">Dashboard</span>
-        <span onClick={()=>{navigate('/profile')}} className="elements">My Bookings</span>
+        <span onClick={()=>{navigate('/')}} className="elements text-light cur-ptr ">Dashboard</span>
+        <span onClick={()=>{navigate('/profile')}} className="elements cur-ptr">My Bookings</span>
       </div>
     </header>
   )

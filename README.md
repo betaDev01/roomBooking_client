@@ -34,8 +34,6 @@ Ensure you have the following installed:
 
 Node.js
 
-npm or yarn
-
 ## Installation
 
 Clone the repository and install dependencies:
@@ -61,8 +59,8 @@ This will start the development server at ```http://localhost:3000/```.
 
 ## Screenshot of the Application
 ### Dashboard
-![image](https://github.com/user-attachments/assets/d34a6f44-dcbb-4333-91b4-ff8e07521c74)
+![image](https://github.com/user-attachments/assets/f02d124e-c734-4dbb-872f-bae127851da4)
 
 ### Booking List Page
 Cards with an Orance background are cancelled reservations.
-![image](https://github.com/user-attachments/assets/35361e3d-062f-4946-81a8-b681e39cae60)
+![image](https://github.com/user-attachments/assets/035199bb-7967-41c9-b5d4-424c997f822a)

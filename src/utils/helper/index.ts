@@ -8,12 +8,14 @@ export const apiCall =async (apiConfig: {
 }) => {
   const url = `http://localhost:4000${apiConfig.apiPath}`
 
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpdmFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE3NDA5MjA1NzZ9.AnZhiYnNYb8zVbKpNI3VqeOo1IO2QrLoTfky3VXDsOc';
   const axiosRequestConfig: AxiosRequestConfig = {
     url,
     method: apiConfig.method,
     data: apiConfig?.data,
     headers: {
       'Accept': 'application/json',
+      'Authorization': token
     },
     params: apiConfig?.params
   };

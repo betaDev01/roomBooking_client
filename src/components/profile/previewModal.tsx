@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import DatePicker from "react-datepicker";
 import { IBookingDetails, IHotelListResponse } from '../../utils/types';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 
 interface IProfileCardProps {
@@ -41,22 +41,24 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
       </Modal.Header>
 
       <Modal.Body className='d-flux'>
+      <Form>
+
         <div>
-          Check IN
+        <Form.Label className='fields-p'>Check IN</Form.Label>
+
           <DatePicker selected={chekIn} maxDate={chekOut || undefined} minDate={new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setCheckIn(date)
           }} />
         </div>
         <div>
-          Check Out
+        <Form.Label className='fields-p'>Check Out</Form.Label>
           <DatePicker selected={chekOut} minDate={chekIn || new Date()} placeholderText="MM/DD/YYYY" onChange={(date: Date | null) => {
             setChekOut(date)
           }} />
         </div>
         <div className='d-flux'>
           <div className="child-ele">
-            <>No of Guests</>
-            <Form>
+              <Form.Label>No of Guests <span className="notify-count"> Max {(hotelDetails?.available_rooms || 0) * 3} Guest</span></Form.Label>
               <Form.Control type="text" onChange={(e) => {
                 const value = e.target.value;
 
@@ -68,13 +70,14 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
                 }
 
               }} value={guestCount} />
-            </Form>
-            <span className="notify-count">Max {(hotelDetails?.available_rooms || 0) * 3} Guest</span>
           </div>
 
           <div className="child-ele">
-            <>No of Rooms</>
-            <Form>
+            <Form.Label>
+            No of Rooms
+            <span className="notify-count">  Max {hotelDetails?.available_rooms || 0} Rooms</span>
+            </Form.Label>
+
               <Form.Control type="text" onChange={(e) => {
                 const value = e.target.value;
                 if (/^\d*$/.test(value)) {
@@ -85,11 +88,10 @@ export const PreviewComponent = ({ hotelDetails, element, show, setShow, callBac
                   }
                 }
               }} value={roomCount} />
-            </Form>
-            <span className="notify-count">Max {hotelDetails?.available_rooms || 0} Rooms</span>
 
           </div>
         </div>
+        </Form>
       </Modal.Body>
 
       <Modal.Footer>

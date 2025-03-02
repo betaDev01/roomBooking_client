@@ -13,7 +13,6 @@ const ProfileComponent = () => {
   const hotelList = useSelector((state: IStore) => state.common.bokingDetailsResponse);
   const hotelListRespose = useSelector((state: IStore) => state.common.hotelListRespose)
   const [showPreview, setPreview] = useState('');
-  console.log("🚀 ~ ProfileComponent ~ showPreview:", showPreview)
   useEffect(() => {
     dispatch(getBookingDetailsRequest());
     dispatch(hotelListRequest());

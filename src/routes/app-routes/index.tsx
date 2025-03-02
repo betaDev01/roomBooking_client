@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Fragment, Suspense } from 'react';
 import { routes } from '../../utils';
 import { Route, Routes } from 'react-router';
 import { CustomSpinner } from '../../components';
@@ -28,12 +28,9 @@ export const AppRoutes = () => {
         path='*'
         element={
           <Suspense fallback={<CustomSpinner />}>
-            <>
-            <img src={notFound} alt = 'not found' />
-              <span className='error-stat error-stat-green'>4</span>
-              <span className='error-stat'>0</span>
-              <span className='error-stat error-stat-green'>4</span>
-            </>
+            <Fragment>
+              <img src={notFound} alt='not found' />
+            </Fragment>
           </Suspense>
         }
       />

@@ -84,7 +84,7 @@ export const commonReducer = (prevState: IReducerInitialState = initialState, ac
       });
 
 
-         //Delete Booking
+    //Delete Booking
     case actionTypes.DELETE_BOOKING_REQUEST:
       return produce(prevState, (nextState) => {
         nextState.isDeleteBookingFetching = true;

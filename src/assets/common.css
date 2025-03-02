@@ -97,3 +97,12 @@
   color: #ffffff !important;
   border-color: #ffffff !important;
 }
+
+.fields-p{
+  display: flex;
+  flex-direction: column;
+}
+
+.cur-ptr{
+  cursor: pointer;
+}
