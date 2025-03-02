@@ -59,7 +59,7 @@ This will start the development server at ```http://localhost:3000/```.
 
 ## Screenshot of the Application
 ### Dashboard
-![image](https://github.com/user-attachments/assets/f02d124e-c734-4dbb-872f-bae127851da4)
+![image](https://github.com/user-attachments/assets/104b48b5-4d55-47a5-8ad0-8763abc2c989)
 
 ### Booking List Page
 Cards with an Orance background are cancelled reservations.
