@@ -13,7 +13,7 @@ export const ProfileCard = ({ hotelDetails, element, callBack, customClass, dele
   return (
     <Card key={element.id} className={`card ${customClass || ''}`}>
       <Card.Body className="card-body">
-        <Card.Title>{hotelDetails?.hotel_name}</Card.Title>
+        <Card.Title>{hotelDetails?.hotel_name} - ({hotelDetails?.location})</Card.Title>
         <Card.Text>
           <span className="content">
             <span> From : {moment(element.check_in_at).format('MMM DD, YYY')} - {moment(element.check_out_at).format('MMM DD, YYY')}</span>
