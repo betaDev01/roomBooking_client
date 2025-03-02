@@ -71,6 +71,7 @@ function* deleteBookingRequest(action: ISagaPayload<IDeleteBookingRequest>): any
     } else {
       const res: IBookingDetails[] = response.data?.data && response.data?.data.length > 0 ?
         response.data.data : [];
+        console.log("🚀 ~ function*deleteBookingRequest ~ res:", res)
       yield put(deleteBookingResponse());
       yield put(getBookingDetailsRequest());
     }
@@ -93,6 +94,7 @@ function* modifyBokingRequest(action: ISagaPayload<IModifyBooking>): any {
     } else {
       const res: IBookingDetails[] = response.data?.data && response.data?.data.length > 0 ?
         response.data.data : [];
+        console.log("🚀 ~ function*modifyBokingRequest ~ res:", res)
       yield put(modifyBookingResponse());
       yield put(getBookingDetailsRequest());
       yield put(hotelListRequest())
