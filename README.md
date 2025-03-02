@@ -59,11 +59,11 @@ This will start the development server at ```http://localhost:3000/```.
 
 ## Screenshot of the Application
 ### Dashboard
-![image](https://github.com/user-attachments/assets/104b48b5-4d55-47a5-8ad0-8763abc2c989)
+![image](https://github.com/user-attachments/assets/46c147fc-a0b2-45eb-a5b2-d4cc61af3a9c)
 
 ### Booking List Page
 Cards with an Orance background are cancelled reservations.
-![image](https://github.com/user-attachments/assets/035199bb-7967-41c9-b5d4-424c997f822a)
+![image](https://github.com/user-attachments/assets/741236ba-5fb1-48a6-8053-c5a412600fad)
 
 ## Unit Testing
 Unit tests need to be implemented to ensure code quality, reliability, and maintainability

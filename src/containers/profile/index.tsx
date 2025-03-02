@@ -10,16 +10,15 @@ const ProfileComponent = () => {
 
   const dispatch = useDispatch();
 
-  const hotelList = useSelector((state: IStore) => state.common.bokingDetailsResponse);
-  const hotelListRespose = useSelector((state: IStore) => state.common.hotelListRespose)
+  const bookingDetails = useSelector((state: IStore) => state.common.bokingDetailsResponse);
+  const hotelListRespose = useSelector((state: IStore) => state.common.hotelListRespose);
+
   const [showPreview, setPreview] = useState('');
   useEffect(() => {
     dispatch(getBookingDetailsRequest());
     dispatch(hotelListRequest());
 
   }, [dispatch])
-
-  console.log(hotelList)
 
   const updateBooking = (action: string, element: IBookingDetails, checkIn?: Date | null, checkOut?: Date | null, guestCount?: number, roomCount?: number) => {
     dispatch(modifyBookingRequest({
@@ -34,7 +33,7 @@ const ProfileComponent = () => {
   }
 
   return (<div className="profile">
-    {hotelList.filter(it => it.action === 'booked').map((it, index) => {
+    {bookingDetails.filter(it => it.action === 'booked').map((it) => {
       const hotelDetails = hotelListRespose.find((hIt) => hIt.id === it.hotel_id);
       return (<Fragment key={it.id}>
         <ProfileCard element={it} hotelDetails={hotelDetails} callBack={() => { setPreview(it.id) }} />
@@ -60,7 +59,7 @@ const ProfileComponent = () => {
       )
     })}
 
-    {hotelList.filter(it => it.action === 'canceled').map((it) => {
+    {bookingDetails.filter(it => it.action === 'canceled').map((it) => {
       const hotelDetails = hotelListRespose.find((hIt) => hIt.id === it.hotel_id);
       return (
         <Fragment key={it.id}>
@@ -76,7 +75,7 @@ const ProfileComponent = () => {
         </Fragment>
       )
     })}
-
+    {bookingDetails.length===0 && <div className="no-data">No Record Found</div>}
   </div>)
 }
 

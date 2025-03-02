@@ -10,7 +10,7 @@ export const HeaderComponent = () => {
 
       <div className="nav-menu">
         <span onClick={()=>{navigate('/')}} className="elements text-light cur-ptr ">Dashboard</span>
-        <span onClick={()=>{navigate('/profile')}} className="elements cur-ptr">My Bookings</span>
+        <span onClick={()=>{navigate('/profile')}} className="elements cur-ptr">Profile</span>
       </div>
     </header>
   )
