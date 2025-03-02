@@ -58,3 +58,11 @@ npm start
 ```
 
 This will start the development server at ```http://localhost:3000/```.
+
+## Screenshot of the Application
+### Dashboard
+![image](https://github.com/user-attachments/assets/d34a6f44-dcbb-4333-91b4-ff8e07521c74)
+
+### Booking List Page
+Cards with an Orance background are cancelled reservations.
+![image](https://github.com/user-attachments/assets/35361e3d-062f-4946-81a8-b681e39cae60)
