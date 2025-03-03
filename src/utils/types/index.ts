@@ -54,17 +54,6 @@ export interface IBookingDetails {
   modified_at: Date | null
 }
 
-export interface IAction<T extends string> {
-  type: T;
-}
-
-export interface IActionWithPayload<T extends string, P> extends IAction<T> {
-  payload: P;
-}
-
-// Explicitly return `AnyAction` to satisfy Redux typings
-export function createAction<T extends string>(type: T): AnyAction;
-export function createAction<T extends string, P>(type: T, payload: P): AnyAction;
 export function createAction<T extends string, P>(type: T, payload?: P): AnyAction {
   return payload === undefined ? { type } : { type, payload };
 }
@@ -82,5 +71,4 @@ export interface IStore {
 export interface ISagaPayload<PayloadType = {}> {
   type: string;
   payload?: PayloadType;
-  filePath?: string;
 }

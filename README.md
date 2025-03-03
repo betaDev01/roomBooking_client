@@ -66,4 +66,6 @@ Cards with an Orance background are cancelled reservations.
 ![image](https://github.com/user-attachments/assets/741236ba-5fb1-48a6-8053-c5a412600fad)
 
 ## Unit Testing
-Unit tests need to be implemented to ensure code quality, reliability, and maintainability
+I have implemented basic unit tests for two different components to ensure code quality, reliability, and maintainability.
+
+![image](https://github.com/user-attachments/assets/df98d4f4-0a00-40fc-958f-3a48cc134370)
